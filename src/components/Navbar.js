@@ -28,7 +28,7 @@ const Navbar = () => {
           top: "10px",
           left: "10px",
           padding: "10px 20px",
-          background: "linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(34, 34, 34, 0.9))",
+          background: "linear-gradient(90deg, rgba(0, 128, 0, 0.8), rgba(255, 165, 0, 0.9))", // Green to Orange
           borderRadius: "0 10px 10px 0",
           zIndex: "1000",
           boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.5)",
@@ -39,7 +39,7 @@ const Navbar = () => {
           style={{
             background: "none",
             border: "none",
-            color: "goldenrod",
+            color: "navy", // Hamburger icon color set to navy blue
             fontSize: "28px",
             cursor: "pointer",
             transition: "transform 0.3s ease, color 0.3s",
@@ -48,11 +48,11 @@ const Navbar = () => {
           tabIndex="0"
           onMouseOver={(e) => {
             e.target.style.transform = "rotate(90deg)";
-            e.target.style.color = "lightgoldenrodyellow";
+            e.target.style.color = "lightgrey"; // Color on hover
           }}
           onMouseOut={(e) => {
             e.target.style.transform = "rotate(0deg)";
-            e.target.style.color = "goldenrod";
+            e.target.style.color = "navy"; // Revert hover color to navy
           }}
         >
           <i className="fas fa-bars" aria-hidden="true"></i>
@@ -68,7 +68,7 @@ const Navbar = () => {
             left: "0",
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.85)",
+            backgroundColor: "rgba(0, 0, 0, 0.85)", // Darkened background
             backdropFilter: "blur(10px)",
             color: "white",
             zIndex: "999",
@@ -88,9 +88,9 @@ const Navbar = () => {
               background: "none",
               border: "none",
               fontSize: "28px",
-              color: "goldenrod",
+              color: "white",
               cursor: "pointer",
-              transition: "transform 0.3s ease",
+              transition: "transform 0.3s",
             }}
             aria-label="Close menu"
             tabIndex="0"
@@ -127,7 +127,7 @@ const Navbar = () => {
                     href={`/${item.toLowerCase().replace(/\s+/g, "")}`}
                     style={{
                       textDecoration: "none",
-                      color: "white",
+                      color: "white", // Text color changed to white
                       fontWeight: "bold",
                       fontSize: "24px",
                       fontFamily: "Playfair Display, serif",
@@ -136,7 +136,7 @@ const Navbar = () => {
                       transition: "background-color 0.3s, transform 0.2s",
                     }}
                     onMouseOver={(e) => {
-                      e.target.style.backgroundColor = "rgba(218, 165, 32, 0.2)";
+                      e.target.style.backgroundColor = "rgba(255, 165, 0, 0.5)"; // Orange background on hover
                       e.target.style.transform = "scale(1.1)";
                     }}
                     onMouseOut={(e) => {
@@ -153,7 +153,7 @@ const Navbar = () => {
                   href="/packages"
                   style={{
                     textDecoration: "none",
-                    color: "white",
+                    color: "white", // Text color changed to white
                     fontWeight: "bold",
                     fontSize: "24px",
                     padding: "10px 15px",
@@ -167,7 +167,6 @@ const Navbar = () => {
             </ul>
           </div>
 
-        
           {isPackagesOpen && (
             <div
               style={{
@@ -206,16 +205,16 @@ const Navbar = () => {
                       href={`/packages/${pkg.name.toLowerCase().replace(/\s+/g, "")}`}
                       style={{
                         textDecoration: "none",
-                        color: "white",
+                        color: "white", // Text color changed to white
                         fontWeight: "bold",
                         fontSize: "18px",
                         padding: "8px 15px",
                         borderRadius: "5px",
-                        backgroundColor: "rgba(218, 165, 32, 0.2)",
+                        backgroundColor: "rgba(255, 165, 0, 0.2)", // Orange background
                         transition: "background-color 0.3s",
                       }}
-                      onMouseOver={(e) => (e.target.style.backgroundColor = "rgba(218, 165, 32, 0.4)")}
-                      onMouseOut={(e) => (e.target.style.backgroundColor = "rgba(218, 165, 32, 0.2)")}
+                      onMouseOver={(e) => (e.target.style.backgroundColor = "rgba(255, 165, 0, 0.4)")} // Darker orange on hover
+                      onMouseOut={(e) => (e.target.style.backgroundColor = "rgba(255, 165, 0, 0.2)")}
                     >
                       {pkg.name}
                     </a>
@@ -227,15 +226,15 @@ const Navbar = () => {
                 style={{
                   background: "none",
                   border: "none",
-                  color: "goldenrod",
+                  color: "white", // Text color changed to white
                   fontSize: "24px",
                   cursor: "pointer",
                   transition: "color 0.3s",
                 }}
                 aria-label="Close packages"
                 tabIndex="0"
-                onMouseOver={(e) => (e.target.style.color = "lightgoldenrodyellow")}
-                onMouseOut={(e) => (e.target.style.color = "goldenrod")}
+                onMouseOver={(e) => (e.target.style.color = "lightgrey")}
+                onMouseOut={(e) => (e.target.style.color = "white")}
               >
                 <i className="fas fa-times" aria-hidden="true"></i> Close
               </button>
@@ -260,16 +259,16 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 style={{
                   textDecoration: "none",
-                  color: "goldenrod",
+                  color: "white", // Text color changed to white
                   fontSize: "26px",
                   transition: "color 0.3s, transform 0.2s",
                 }}
                 onMouseOver={(e) => {
-                  e.target.style.color = "lightgoldenrodyellow";
+                  e.target.style.color = "lightgrey"; // Color on hover
                   e.target.style.transform = "scale(1.2)";
                 }}
                 onMouseOut={(e) => {
-                  e.target.style.color = "goldenrod";
+                  e.target.style.color = "white"; // Revert hover color
                   e.target.style.transform = "scale(1)";
                 }}
               >
@@ -287,18 +286,55 @@ const Navbar = () => {
            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }`
         }
       </style>
+
+      {/* Responsive Styles */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            nav {
+              padding: 5px 15px;
+            }
+            .navbar-button {
+              font-size: 24px; /* Smaller hamburger icon */
+            }
+
+            /* Slide-out Menu */
+            .slide-out-menu {
+              padding: 30px 15px; /* Reduce padding */
+            }
+
+            .menu-item {
+              font-size: 20px; /* Smaller font size for links */
+              padding: 8px 10px; /* Reduce padding */
+            }
+
+            .social-media-icons {
+              bottom: 15px; /* Closer to the bottom for mobile */
+              left: 10px; /* Adjust left position */
+            }
+          }
+
+          @media (max-width: 480px) {
+            nav {
+              padding: 5px 10px; /* Further reduce padding */
+            }
+
+            .navbar-button {
+              font-size: 22px; /* Even smaller hamburger icon */
+            }
+
+            .slide-out-menu {
+              padding: 20px 10px; /* Further reduce padding */
+            }
+
+            .menu-item {
+              font-size: 18px; /* Smaller font size for links */
+            }
+          }
+        `}
+      </style>
     </>
   );
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-
-
-
