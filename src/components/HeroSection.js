@@ -17,7 +17,7 @@ const HeroSection = () => {
     },
     {
       type: 'country',
-      image: "/images/country1.jpg", // Placeholder for country image
+      image: "/images/country1.jpg",
       country: "India",
       paragraph: "Experience the diversity and richness of culture while embracing wellness.",
     },
@@ -30,7 +30,7 @@ const HeroSection = () => {
     },
     {
       type: 'country',
-      image: "/images/country2.jpg", // Placeholder for country image
+      image: "/images/country2.jpg",
       country: "Malaysia",
       paragraph: "Breathe in the natural beauty and wellness of Malaysia.",
     },
@@ -43,7 +43,7 @@ const HeroSection = () => {
     },
     {
       type: 'country',
-      image: "/images/country3.jpg", // Placeholder for country image
+      image: "/images/country3.jpg",
       country: "Thailand",
       paragraph: "Find your balance amidst the vibrant culture and serene landscapes.",
     },
@@ -56,7 +56,7 @@ const HeroSection = () => {
     },
     {
       type: 'country',
-      image: "/images/country4.jpg", // Placeholder for country image
+      image: "/images/country4.jpg",
       country: "Vietnam",
       paragraph: "Discover tranquility in Vietnam's breathtaking natural beauty.",
     },
@@ -69,7 +69,7 @@ const HeroSection = () => {
     },
     {
       type: 'country',
-      image: "/images/country5.jpg", // Placeholder for country image
+      image: "/images/country5.jpg",
       country: "Indonesia",
       paragraph: "Unwind in Indonesia's beautiful resorts and wellness centers.",
     },
@@ -95,22 +95,22 @@ const HeroSection = () => {
                 alt={`Slide ${index + 1}`}
                 style={styles.carouselImage}
               />
-              <div style={styles.overlayText}>
-                {slide.type === 'wellness' ? (
-                  <>
-                    <h2 style={styles.overlayHeading}>{slide.heading}</h2>
-                    <p style={styles.overlayParagraph}>{slide.paragraph}</p>
-                    <p style={styles.overlaySubText}>{slide.subText}</p>
-                  </>
-                ) : (
-                  <>
-                    <Link to={`/country/${slide.country.toLowerCase()}`} style={styles.countryLink}>
-                      <h2 style={styles.countryOverlayHeading}>{slide.country}</h2>
-                    </Link>
-                    <p style={styles.countryOverlayParagraph}>{slide.paragraph}</p>
-                  </>
-                )}
-              </div>
+              {/* Show overlay text only for respective slide types */}
+              {slide.type === 'wellness' && (
+                <div style={styles.overlayText}>
+                  <h2 style={styles.overlayHeading}>{slide.heading}</h2>
+                  <p style={styles.overlayParagraph}>{slide.paragraph}</p>
+                  <p style={styles.overlaySubText}>{slide.subText}</p>
+                </div>
+              )}
+              {slide.type === 'country' && (
+                <div style={styles.overlayText}>
+                  <Link to={`/country/${slide.country.toLowerCase()}`} style={styles.countryLink}>
+                    <h2 style={styles.countryOverlayHeading}>{slide.country}</h2>
+                  </Link>
+                  <p style={styles.countryOverlayParagraph}>{slide.paragraph}</p>
+                </div>
+              )}
             </div>
           ))}
         </Carousel>
@@ -156,7 +156,6 @@ const HeroSection = () => {
               Countries
               {showCountries && (
                 <ul style={{ ...styles.submenuList, ...styles.submenuListVisible }}>
-                  {/* Use Links for navigations */}
                   <li style={styles.submenuItem}>
                     <Link to="/country/india" style={styles.submenuLink}>India</Link>
                   </li>
@@ -181,6 +180,29 @@ const HeroSection = () => {
             <li style={styles.menuItem}>Blog</li>
           </ul>
         </div>
+
+        {/* Overlay Text placed below the menu */}
+        <div style={styles.overlayTextContainer}>
+          {/* Overlay text will be dynamically placed here */}
+          {slides.map((slide, index) => (
+            <div key={index} style={styles.overlayText}>
+              {slide.type === 'wellness' ? (
+                <>
+                  <h2 style={styles.overlayHeading}>{slide.heading}</h2>
+                  <p style={styles.overlayParagraph}>{slide.paragraph}</p>
+                  <p style={styles.overlaySubText}>{slide.subText}</p>
+                </>
+              ) : (
+                <>
+                  <Link to={`/country/${slide.country.toLowerCase()}`} style={styles.countryLink}>
+                    <h2 style={styles.countryOverlayHeading}>{slide.country}</h2>
+                  </Link>
+                  <p style={styles.countryOverlayParagraph}>{slide.paragraph}</p>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -197,16 +219,16 @@ const styles = {
   },
   carouselImageWrapper: {
     position: "relative",
-    textAlign: "center", // Add for responsive design
+    textAlign: "center",
   },
   carouselImage: {
-    maxWidth: "100%", // Add for responsive design
+    maxWidth: "100%",
     height: "100vh",
     objectFit: "cover",
   },
   titleContainer: {
     position: "absolute",
-    top: 50, // Adjusted for better alignment
+    top: 50,
     left: "50%",
     transform: "translateX(-50%)",
     zIndex: 10,
@@ -218,7 +240,7 @@ const styles = {
     marginRight: "15px",
   },
   logo: {
-    width: "120px", // Enlarged logo size
+    width: "120px",
     height: "auto",
   },
   pageTitle: {
@@ -226,15 +248,15 @@ const styles = {
     fontFamily: "'Playfair Display', serif",
     textShadow: "2px 2px 10px rgba(0, 0, 0, 0.7)",
     color: "#fff",
-    maxWidth: "700px", // Max-width added for responsive design
+    maxWidth: "700px",
   },
   menuContainer: {
     position: "absolute",
-    top: 200, // Adjusted for better alignment
+    top: 160, // Space above menu
     left: "50%",
     transform: "translateX(-50%)",
     zIndex: 10,
-    background: "#001F3F", // Navy blue background
+    background: "#001F3F",
     padding: "10px 30px",
     borderRadius: "30px",
     boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
@@ -246,8 +268,8 @@ const styles = {
     margin: 0,
     padding: 0,
     display: "flex",
-    gap: "20px", // Adjusted for better alignment
-    flexDirection: "column", // Change to column for responsive design
+    gap: "30px", // Space between menu items
+    flexDirection: "row",
     alignItems: "center",
     fontFamily: "'Lora', sans-serif",
     fontSize: "1.2rem",
@@ -257,19 +279,27 @@ const styles = {
     position: "relative",
     cursor: "pointer",
     padding: "10px 20px",
-    borderRadius: "30px", // Rounded buttons for sleekness
-    transition: "background-color 0.3s ease-in-out",
-    color: "#fff", // White color for menu items
+    borderRadius: "30px",
+    color: "#fff",
     fontWeight: "bold",
-    fontSize: "1.5rem", // Adjusted for better alignment
-    marginBottom: "20px", // Add for spacing
+  },
+  overlayTextContainer: {
+    position: "absolute",
+    top: 210, // Position of the overlay text below the menu
+    left: "10%",
+    zIndex: 10,
+    maxWidth: "400px",
+  },
+  overlayText: {
+    marginTop: "20px", // Space between the menu and overlay text
+    textAlign: "left",
   },
   submenuList: {
     listStyleType: "none",
     position: "absolute",
     top: "30px",
     left: 0,
-    backgroundColor: "#222", // Darker background for the dropdown
+    backgroundColor: "#222",
     padding: "10px",
     borderRadius: "5px",
     display: "none",
@@ -286,110 +316,40 @@ const styles = {
   submenuItem: {
     padding: "10px 15px",
     color: "#fff",
-    background: "#001F3F", // Navy blue for submenu items
+    background: "#001F3F",
     cursor: "pointer",
     transition: "background-color 0.2s ease-in-out",
-    fontSize: "1.2rem", // Adjusted for better alignment
+    fontSize: "1rem",
   },
   countryLink: {
     textDecoration: "none",
-    color: "#fff", // Ensure the link color remains white
-  },
-  overlayText: {
-    position: "absolute",
-    top: "50%",
-    left: "10%",
-    transform: "translateY(-50%)",
-    zIndex: 10,
-    textAlign: "left",
-    maxWidth: "400px",
+    color: "#fff",
   },
   overlayHeading: {
     fontSize: "2rem",
     fontWeight: "bold",
-    color: "#001F3F", // Navy blue color for wellness
+    color: "#001F3F",
   },
   overlayParagraph: {
     fontSize: "1.2rem",
     marginTop: "10px",
-    color: "#001F3F", // Navy blue color for wellness
+    color: "#001F3F",
   },
   overlaySubText: {
     fontSize: "1rem",
     marginTop: "10px",
     fontStyle: "italic",
-    color: "#001F3F", // Navy blue color for wellness
+    color: "#001F3F",
   },
   countryOverlayHeading: {
     fontSize: "2rem",
     fontWeight: "bold",
-    color: "#fff", // White color for country text
+    color: "#fff",
   },
   countryOverlayParagraph: {
     fontSize: "1.2rem",
     marginTop: "10px",
-    color: "#fff", // White color for country text
-  },
-  mediaQueryLarge: {
-    "@media (max-width: 1200px)": {
-      menuContainer: {
-        top: 100, // Adjusted for better alignment
-      },
-    },
-  },
-  mediaQueryMiddle: {
-    "@media (max-width: 768px)": {
-      menuContainer: {
-        top: 100, // Adjusted for better alignment
-        flexDirection: "column", // Change to column for responsive design
-      },
-      menuList: {
-        flexDirection: "column", // Change to column for responsive design
-      },
-      menuItem: {
-        marginBottom: "10px", // Adjusted for better alignment
-      },
-    },
-  },
-  mediaQuerySmall: {
-    "@media (max-width: 576px)": {
-      titleContainer: {
-        top: 20, // Adjusted for better alignment
-        fontSize: "1.5rem", // Adjusted for better alignment
-      },
-      logoContainer: {
-        marginRight: 0, // Adjusted for better alignment
-      },
-      logo: {
-        width: 60, // Adjusted for better alignment
-      },
-      pageTitle: {
-        fontSize: "1.5rem", // Adjusted for better alignment
-      },
-      menuContainer: {
-        top: 0, // Adjusted for better alignment
-        padding: "0 20px", // Adjusted for better alignment
-      },
-      menuList: {
-        gap: "10px", // Adjusted for better alignment
-      },
-      menuItem: {
-        padding: "5px 10px", // Adjusted for better alignment
-        fontSize: "1rem", // Adjusted for better alignment
-      },
-    },
-    "@media (max-width: 480px)": {
-      menuContainer: {
-        padding: "0 10px", // Adjusted for better alignment
-      },
-      menuList: {
-        gap: "5px", // Adjusted for better alignment
-      },
-      menuItem: {
-        padding: "3px 5px", // Adjusted for better alignment
-        fontSize: "0.9rem", // Adjusted for better alignment
-      },
-    },
+    color: "#fff",
   },
 };
 

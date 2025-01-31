@@ -1,7 +1,97 @@
 import React from "react";
 
 const Blog = () => {
-  // ... Same initial data ...
+  // Sample data for the blog
+  const mainPost = {
+    title: "The Journey to Wellness",
+    date: "January 1, 2023",
+    description: "Join us as we explore the path to holistic wellness.",
+    image: "https://lh3.googleusercontent.com/x9Q7Z9k5u3b4j6k5u6k7l8m9n0p1q2r3s4t5=150-h750", // Example image URL
+  };
+
+  const blogPosts = [
+    {
+      title: "Finding Peace in Nature",
+      date: "February 15, 2023",
+      description:
+        "Discover the healing power of the natural world by exploring serene landscapes, forests, and water bodies.",
+      image: "https://lh3.googleusercontent.com/1a2b3c4d5e6f7g8h9i0k=150-h750", // Example image URL
+      imageAlt: "Peaceful nature scene",
+    },
+    {
+      title: "Mindful Meditation Techniques",
+      date: "March 10, 2023",
+      description:
+        "Enhance your meditation practice with these techniques to achieve a deeper state of relaxation and self-awareness.",
+      image: "https://lh3.googleusercontent.com/2a3b4c5d6e7f8g9i0k=150-h750", // Example image URL
+      imageAlt: "Person meditating in nature",
+    },
+    {
+      title: "The Power of Gratitude",
+      date: "April 1, 2023",
+      description:
+        "Learn how focusing on gratitude can transform your life by fostering positive relationships and a more optimistic outlook.",
+      image: "https://lh3.googleusercontent.com/3a4b5c6d7e8f9g10k=150-h750", // Example image URL
+      imageAlt: "Person writing in a gratitude journal",
+    },
+    {
+      title: "Nutrition for Optimal Health",
+      date: "May 15, 2023",
+      description:
+        "Discover how proper nutrition and meal planning can improve your overall well-being by supporting your physical and mental health.",
+      image: "https://lh3.googleusercontent.com/4a5b6c7d8e9f10g11k=150-h750", // Example image URL
+      imageAlt: "Healthy plate with vegetables and fruits",
+    },
+    {
+      title: "Embracing Mindfulness in Daily Life",
+      date: "June 10, 2023",
+      description:
+        "Incorporate mindfulness into your daily routine to reduce stress and improve your focus by being present in the moment.",
+      image: "https://lh3.googleusercontent.com/5a6b7c8d9e10f11g12k=150-h750", // Example image URL
+      imageAlt: "Person practicing yoga outdoors",
+    },
+    {
+      title: "Wellness for a Happy Life",
+      date: "July 1, 2023",
+      description:
+        "Learn how prioritizing wellness can lead to a more fulfilling and balanced life, filled with positivity and joy.",
+      image: "https://lh3.googleusercontent.com/6a7b8c9d10e11f12g13k=150-h750", // Example image URL
+      imageAlt: "Person smiling in a beautiful landscape",
+    },
+  ];
+
+  const galleryImages = [
+    {
+      title: "Retreat Experience",
+      src: "https://lh3.googleusercontent.com/a1b2c3d4e5f6g7h8i=200-h100", // Example image URL
+      alt: "People enjoying a retreat",
+    },
+    {
+      title: "Nature Walk",
+      src: "https://lh3.googleusercontent.com/b1c2d3e4f5g6h7i8j=200-h100", // Example image URL
+      alt: "Person walking in nature",
+    },
+    {
+      title: "Group Meditation",
+      src: "https://lh3.googleusercontent.com/c1d2e3f4g5h6i7j8k=200-h100", // Example image URL
+      alt: "People meditating together",
+    },
+    {
+      title: "Wellness Workshop",
+      src: "https://lh3.googleusercontent.com/d1e2f3g4h5i6j7k8l=200-h100", // Example image URL
+      alt: "People participating in a workshop",
+    },
+    {
+      title: "Sunrise Hike",
+      src: "https://lh3.googleusercontent.com/e1f2g3h4i5j6k7l8m=200-h100", // Example image URL
+      alt: "People hiking at sunrise",
+    },
+    {
+      title: "Yoga Practice",
+      src: "https://lh3.googleusercontent.com/f1g2h3i4j5k6l8m9n=200-h100", // Example image URL
+      alt: "People practicing yoga",
+    },
+  ];
 
   return (
     <div style={styles.blogContainer}>
@@ -47,15 +137,22 @@ const Blog = () => {
       <h2 style={{ ...styles.blogTitle, marginTop: "50px" }}>OUR GALLERY</h2>
       <div style={styles.galleryContainer}>
         {galleryImages.map((image, index) => (
-          <div key={index} style={{ ...styles.galleryItem, animationDelay: `${index * 0.1}s` }} className="galleryItem">
-            <img 
-              src={image.src} 
-              alt={`Gallery Image ${index + 1}`} 
-              style={styles.galleryImage} 
-              loading="lazy" 
+          <div
+            key={index}
+            style={{
+              ...styles.galleryItem,
+              animationDelay: `${index * 0.1}s`,
+            }}
+            className="galleryItem"
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              style={styles.galleryImage}
+              loading="lazy"
               className="galleryImage"
             />
-            <p style={styles.galleryCaption}>{image.caption}</p>
+            <p style={styles.galleryCaption}>{image.title}</p>
           </div>
         ))}
       </div>
